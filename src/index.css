@@ -4,34 +4,25 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 213 74% 18%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 213 74% 18%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 213 74% 18%;
-
-    --primary: 213 74% 18%;
+    --background: 218 47% 11%;
+    --foreground: 210 100% 97%;
+    --card: 218 47% 14%;
+    --card-foreground: 210 100% 97%;
+    --popover: 218 47% 14%;
+    --popover-foreground: 210 100% 97%;
+    --primary: 25 91% 49%;
     --primary-foreground: 0 0% 100%;
-
-    --secondary: 174 100% 40%;
-    --secondary-foreground: 213 74% 18%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 174 100% 40%;
-    --accent-foreground: 213 74% 18%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 174 100% 40%;
-
+    --secondary: 218 47% 22%;
+    --secondary-foreground: 210 100% 97%;
+    --muted: 218 47% 20%;
+    --muted-foreground: 210 60% 75%;
+    --accent: 25 91% 49%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 218 47% 22%;
+    --input: 218 47% 22%;
+    --ring: 25 91% 49%;
     --radius: 0.75rem;
   }
 }
@@ -46,69 +37,107 @@
   }
 
   body {
-    @apply bg-background text-foreground font-montserrat;
+    @apply font-montserrat;
+    background-color: #0a1628;
+    color: #f0f8ff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 }
 
 @layer utilities {
-  .text-gradient-teal {
-    background: linear-gradient(135deg, #00c9b1, #00e5cc);
+  .card-float {
+    transition:
+      transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 0.35s ease;
+  }
+  .card-float:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow:
+      0 24px 48px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(232, 101, 10, 0.25);
+  }
+
+  .btn-orange {
+    background: linear-gradient(135deg, #e8650a, #ff7a1a);
+    color: #fff;
+    font-weight: 700;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s,
+      filter 0.2s;
+  }
+  .btn-orange:hover {
+    transform: translateY(-2px) scale(1.03);
+    filter: brightness(1.12);
+    box-shadow: 0 8px 28px rgba(232, 101, 10, 0.5);
+  }
+
+  .anim-hidden {
+    opacity: 0;
+    transform: translateY(36px);
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s ease;
+  }
+  .anim-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  .bubble-delay-0 {
+    animation-delay: 0s;
+  }
+  .bubble-delay-1 {
+    animation-delay: 0.6s;
+  }
+  .bubble-delay-2 {
+    animation-delay: 1.2s;
+  }
+  .bubble-delay-3 {
+    animation-delay: 1.8s;
+  }
+  .bubble-delay-4 {
+    animation-delay: 2.4s;
+  }
+  .bubble-delay-5 {
+    animation-delay: 3s;
+  }
+
+  .text-orange-gradient {
+    background: linear-gradient(135deg, #e8650a, #ff9a4d);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  .bg-navy-gradient {
-    background: linear-gradient(135deg, #0d2b4e 0%, #0f3460 50%, #1a3d6b 100%);
-  }
-
-  .bg-hero-gradient {
+  .shimmer-bg {
     background: linear-gradient(
-      160deg,
-      #051525 0%,
-      #0d2b4e 40%,
-      #0f3460 70%,
-      #1a4a7a 100%
+      90deg,
+      #0d3b6e 0%,
+      #1a5499 35%,
+      #e8650a 50%,
+      #1a5499 65%,
+      #0d3b6e 100%
     );
+    background-size: 200% 100%;
+    animation: shimmer 3s linear infinite;
   }
 
-  .card-hover {
-    transition:
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
+  .step-line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, #e8650a, #ff7a1a);
+    opacity: 0.5;
+    margin: 0 8px;
   }
 
-  .card-hover:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(0, 201, 177, 0.15);
-  }
-
-  .teal-glow {
-    box-shadow: 0 0 30px rgba(0, 201, 177, 0.25);
-  }
-
-  .animate-delay-100 {
-    animation-delay: 0.1s;
-  }
-  .animate-delay-200 {
-    animation-delay: 0.2s;
-  }
-  .animate-delay-300 {
-    animation-delay: 0.3s;
-  }
-  .animate-delay-400 {
-    animation-delay: 0.4s;
-  }
-  .animate-delay-500 {
-    animation-delay: 0.5s;
-  }
-  .animate-delay-600 {
-    animation-delay: 0.6s;
-  }
-
-  .opacity-0-init {
-    opacity: 0;
+  .wave-svg {
+    overflow: hidden;
+    line-height: 0;
+    margin-bottom: -1px;
   }
 }
